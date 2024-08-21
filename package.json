@@ -1,6 +1,6 @@
 {
     "name": "filterqfy",
-    "version": "0.0.165",
+    "version": "0.0.170",
     "type": "module",
     "main": "dist/bundle-index.js",
     "types": "./dist/index.d.ts",
