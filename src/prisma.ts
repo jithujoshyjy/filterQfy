@@ -1,6 +1,6 @@
 import { parse } from "./index";
 
-export function createFilter<T extends Prisma>(prisma: T, tableName: keyof T, filterStr: string) {
+export function createFilter<T>(prisma: T, tableName: keyof T, filterStr: string) {
     const input = filterStr.trim()
     const ast = parse.expr2(input)
     if (!ast || ast.idx < input.length) return
@@ -230,17 +230,4 @@ function deepVisit(root: any, visit: (obj: any, prop: string | number, value: an
 
 function hasProp(obj: any, prop: any) {
     return typeof obj == "object" && prop && prop in obj
-}
-
-type Prisma = {
-    [model: string]: {
-        fields: {
-            [field: string]: {
-                isList: boolean,
-                modelName: string,
-                name: string,
-                typeName: string,
-            }
-        }
-    }
 }
