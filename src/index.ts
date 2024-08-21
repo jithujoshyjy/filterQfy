@@ -266,21 +266,6 @@ const expr0 = (str: string, idx: number = 0) => {
     if (!firstTerm) return null
     i = firstTerm.idx
 
-    type PrefixOperation = {
-        type: "prefix-operation",
-        operator: NonNullable<ReturnType<typeof prefix>>,
-        operand: NonNullable<ReturnType<typeof term>>,
-        idx: number
-    }
-
-    type Infix0Operation = {
-        type: "infix0-operation",
-        operator: NonNullable<ReturnType<typeof infix0>>,
-        left: Infix0Operation | PrefixOperation | NonNullable<ReturnType<typeof term>>,
-        right: PrefixOperation | NonNullable<ReturnType<typeof term>>,
-        idx: number
-    }
-
     let left:
         | Infix0Operation
         | PrefixOperation
@@ -339,14 +324,6 @@ const expr1 = (str: string, idx: number = 0) => {
     if (!firstExpr0) return null
     i = firstExpr0.idx
 
-    type Infix1Operation = {
-        type: "infix1-operation",
-        operator: NonNullable<ReturnType<typeof infix1>>,
-        left: Infix1Operation | NonNullable<ReturnType<typeof expr0>>,
-        right: NonNullable<ReturnType<typeof expr0>>,
-        idx: number
-    }
-
     let left:
         | Infix1Operation
         | NonNullable<ReturnType<typeof expr0>> = firstExpr0
@@ -383,14 +360,6 @@ const expr2 = (str: string, idx: number = 0) => {
     const firstExpr1 = expr1(str, i)
     if (!firstExpr1) return null
     i = firstExpr1.idx
-
-    type Infix2Operation = {
-        type: "infix2-operation",
-        operator: NonNullable<ReturnType<typeof infix2>>,
-        left: Infix2Operation | NonNullable<ReturnType<typeof expr1>>,
-        right: NonNullable<ReturnType<typeof expr1>>,
-        idx: number
-    }
 
     let left:
         | Infix2Operation
@@ -441,4 +410,35 @@ export const parse = {
     expr0,
     expr1,
     expr2,
+}
+
+export type PrefixOperation = {
+    type: "prefix-operation",
+    operator: NonNullable<ReturnType<typeof prefix>>,
+    operand: NonNullable<ReturnType<typeof term>>,
+    idx: number
+}
+
+export type Infix0Operation = {
+    type: "infix0-operation",
+    operator: NonNullable<ReturnType<typeof infix0>>,
+    left: Infix0Operation | PrefixOperation | NonNullable<ReturnType<typeof term>>,
+    right: PrefixOperation | NonNullable<ReturnType<typeof term>>,
+    idx: number
+}
+
+export type Infix1Operation = {
+    type: "infix1-operation",
+    operator: NonNullable<ReturnType<typeof infix1>>,
+    left: Infix1Operation | NonNullable<ReturnType<typeof expr0>>,
+    right: NonNullable<ReturnType<typeof expr0>>,
+    idx: number
+}
+
+export type Infix2Operation = {
+    type: "infix2-operation",
+    operator: NonNullable<ReturnType<typeof infix2>>,
+    left: Infix2Operation | NonNullable<ReturnType<typeof expr1>>,
+    right: NonNullable<ReturnType<typeof expr1>>,
+    idx: number
 }
