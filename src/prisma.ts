@@ -1,6 +1,6 @@
 import { parse } from "./index";
 
-export function createFiltera(prisma: any, tableName: string, filterStr: string) {
+export function createFilter(prisma: any, tableName: string, filterStr: string) {
     const input = filterStr.trim()
     const ast = parse.expr2(input)
     if (!ast || ast.idx < input.length) return
