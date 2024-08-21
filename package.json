@@ -1,12 +1,13 @@
 {
     "name": "filterqfy",
-    "version": "0.0.155",
+    "version": "0.0.160",
     "type": "module",
     "main": "dist/bundle-index.js",
     "types": "./dist/index.d.ts",
     "files": [
         "dist",
-        "prisma.js"
+        "prisma.js",
+        "prisma.d.ts"
     ],
     "scripts": {
         "build": "rollup -c",
