@@ -1,1 +1,1 @@
-export * from "dist/bundle-prisma.js"
+export * from "./dist/bundle-prisma.js"
