@@ -78,7 +78,10 @@ function transformInfix0Operation(prisma: any, tableName: string, ast: any): any
         gte: "gte",
         in: "in",
         noteq: "not",
-        notin: "notIn"
+        notin: "notIn",
+        has: "contains",
+        begins: "startsWith",
+        ends: "endsWith",
     } as any
 
     const oppositeOperators = {
@@ -89,7 +92,10 @@ function transformInfix0Operation(prisma: any, tableName: string, ast: any): any
         gte: "lte",
         in: "notin",
         noteq: "eq",
-        notin: "in"
+        notin: "in",
+        has: "has",
+        begins: "ends",
+        ends: "begins",
     } as any
 
     const isLeftPrimitive = !hasProp(lhs, '_$metadata') || lhs === null || Array.isArray(lhs)

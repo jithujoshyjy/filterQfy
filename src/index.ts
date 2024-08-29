@@ -205,7 +205,10 @@ const prefix = (str: string, idx: number = 0) => {
 }
 
 const infix0 = (str: string, idx: number = 0) => {
-    const operators = ["lte", "gte", "lt", "gt", "eq", "in", "notin", "noteq"]
+    const operators = [
+        "lte", "gte", "lt", "gt", "eq", "in",
+        "notin", "noteq", "has", "begins", "ends"
+    ]
 
     const id = word(str, idx)
     if (!id) return null
