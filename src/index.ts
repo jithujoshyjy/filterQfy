@@ -52,7 +52,8 @@ const number = (str: string, idx: number = 0) => {
 
 const string = (str: string, idx: number = 0) => {
     let i = idx
-    if (!str.startsWith('"')) return null; i++
+
+    if (str.charAt(i) != '"') return null; i++
     let string = "", char = str[i], escaped = false
     for (; i < str.length; i++, char = str[i]) {
         if (escaped || !['"', "\\"].includes(str[i])) {

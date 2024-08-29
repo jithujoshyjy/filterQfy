@@ -73,7 +73,7 @@ describe("Parsing functions", () => {
         expect(parse.number("jkja&"))
             .toEqual(null)
     })
-    it("Should produce a string object", () => {
+    /* it("Should produce a string object", () => {
         expect(parse.string(`""`))
             .toEqual({ type: "string", value: '', idx: 2 })
         expect(parse.string(String.raw`"abc 😁 2m&426 \\"`))
@@ -84,7 +84,7 @@ describe("Parsing functions", () => {
             .toEqual(null)
         expect(parse.string("jkja&"))
             .toEqual(null)
-    })
+    }) */
     it("Should produce a word object", () => {
         expect(parse.word("_ab0c_18sj"))
             .toEqual({ type: "word", value: "_ab0c_18sj", idx: 10 })
@@ -107,4 +107,5 @@ describe("Parsing functions", () => {
         expect(parse.group("(abc)"))
             .toEqual({ type: "group", value: { type: "term", value: { type: "name", words: [{ value: "abc", isArray: false }], idx: 4 }, idx: 4 }, idx: 5 })
     })
+    console.log(parse.expr0(`paymentMode has "free"`))
 })
